@@ -46,66 +46,30 @@ void init() {
 }
 
 
-void solve() {
+lli gcds(lli a, lli b) {
+	lli as;
+	if (b == 0)
+		return a;
+	as = a % b;
+	return gcds(b, as);
+}
 
-	std::vector<int> v;
-	string s;
-	cin >> s;
-	sort(s.begin(), s.end());
-	for (int i = 0; i < s.length(); i++) {
-		if (s[i] == '+') {
-			continue;
-		}
-		if (i == s.length() - 1) {
-			cout << s[i];
-		}
-		else {
-			cout << s[i] << '+';
-		}
-	}
+long long lcm(int a, int b)
+{
+	return (a / gcds(a, b)) * b;
 }
 
 
-// long long maxpp(const vector<int>& nums) {
-// 	int n = nums.size();
-// 	int maxi1 = -1;
-// 	for (int i = 0; i < n; ++i)
-// 	{
-// 		if ((maxi1 == -1) || (nums[i] > nums[maxi1]))
-// 			maxi1 = i;
-// 	}
-// 	int maxi2 = -1;
-// 	for (int j = 0; j < n; ++j)
-// 	{
-// 		/* code */
-// 		if ((j != maxi1) && ((maxi2 == -1) || (nums[j] > nums[maxi2])))
-// 			maxi2 = j;
-// 	}
-// 	return ((lli)(nums[maxi1])) * nums[maxi2];
-// }
-
-lli fib(int n) {
-	lli n1 = 1;
-	lli n2 = 1;
-	for (int i = 0; i < n - 1; ++i)
-	{
-		/* code */
-		lli b = n2;
-		n2 = (n1 % 10 * n1 % 10) + (n2 % 10 * n2 % 10);
-		n1 = b;
-
-	}
-	return n1;
-}
 
 int main() {
 
-	init();
+	// init();
 	cin.tie(0); cout.tie(0); ios::sync_with_stdio(false);
 
 
-	int n;
-	cin >> n;
-	cout << fib(n) << "\n";
+
+	lli a, b;
+	cin >> a >> b;
+	cout << lcm(a, b) << "\n";
 
 }
